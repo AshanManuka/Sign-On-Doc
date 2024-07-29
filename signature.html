@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document Upload & Signature</title>
+    <meta name="viewport" content="width=device-width initial-scale=1 user-scalable=no">
+    <link rel="stylesheet" href="event/css/bootstrap.min.css">
+    <link rel="stylesheet" href="event/style/mainform.css">
+
+    <style>
+        #documentContainer {
+            width: 100%;
+            height: 600px;
+            overflow: auto;
+            margin-bottom: 10px;
+        }
+        canvas {
+            display: block;
+            margin: 10px auto;
+            border:2px solid black; 
+            border-radius: 10px;
+        }
+
+        #saveSignature{
+            position: relative; 
+            background-color: #17153B;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            width: 100%;
+            font-size: 20px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;      
+        }
+    </style>
+
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-12" style="margin-top: 20px;"></div>
+        <div class="col-md-1"></div>
+        <div class="col-md-10"><h1>Upload Document Here</h1></div>
+        <div class="col-md-1"></div>
+        <div class="col-md-12" style="margin-top: 20px;"></div>
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <input type="file" id="document" accept=".pdf,.doc,.docx" required>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div id="documentContainer"></div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <canvas id="signaturePad"></canvas>
+        </div>
+        <div class="col-md-2"></div>
+
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <button id="saveSignature">Save Signature</button>
+        </div>
+        <div class="col-md-3"></div>
+
+
+
+        
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <a id="downloadLink" style="display: none;">Download Signed Document</a>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.2/mammoth.browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.1/dist/signature_pad.umd.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
