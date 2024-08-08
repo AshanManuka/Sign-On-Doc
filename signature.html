@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width initial-scale=1 user-scalable=no">
     <link rel="stylesheet" href="event/css/bootstrap.min.css">
     <link rel="stylesheet" href="event/style/mainform.css">
+    <link rel="stylesheet" href="event/fonts/css/all.css">
 
     <style>
         #documentContainer {
             width: 100%;
-            height: 600px;
+            height: 60vh;
             overflow: auto;
             margin-bottom: 10px;
         }
@@ -22,6 +23,22 @@
         #signaturePad{
             border:2px solid black;
             border-radius: 10px;
+            float: right;
+        }
+
+        #document{
+            position: relative; 
+            background-color: #466e8a;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px; 
         }
 
         #saveSignature{
@@ -39,6 +56,45 @@
             cursor: pointer;
             border-radius: 5px;      
         }
+
+        #downloadLink{
+            position: relative; 
+            background-color: #6D214F;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            width: 100%;
+            font-size: 20px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;  
+        }
+
+        #clearBtn{
+            position: relative; 
+            background-color: #f1d740;
+            color: blackwhite;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            width: 100%;
+            font-size: 20px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;   
+        }
+
+        .colorBox{
+            height: 50px;
+            border-radius: 5px;
+            margin-right: 5px;
+        }
+
     </style>
 
 </head>
@@ -46,34 +102,52 @@
     <div class="row">
         <div class="col-md-12" style="margin-top: 20px;"></div>
         <div class="col-md-1"></div>
-        <div class="col-md-10"><h1>Upload Document Here</h1></div>
-        <div class="col-md-1"></div>
+        <div class="col-md-8"><h1>Upload Document Here</h1></div>
+        <div class="col-md-3"></div>
         <div class="col-md-12" style="margin-top: 20px;"></div>
         <div class="col-md-1"></div>
-        <div class="col-md-10">
+        <div class="col-md-8">
             <input type="file" id="document" accept=".pdf,.doc,.docx" required>
         </div>
-        <div class="col-md-1"></div>
+        <div class="col-md-3" style="background-color: #051391;"></div>
     </div>
 
     <div class="row">
-        <div class="col-md-2"></div>
+        <div class="col-md-1"></div>
         <div class="col-md-8">
             <div id="documentContainer"></div>
         </div>
-        <div class="col-md-2"></div>
+        <div class="col-md-3"></div>
     </div>
 
     <div class="row">
         <div class="col-md-2"></div>
-        <div class="col-md-8">
+        <div class="col-md-5">
             <canvas id="signaturePad"></canvas>
+        </div>
+        <div class="col-md-3">
+            <div class="row">
+                <div class="row" style="height: 20px;"></div>
+                <div class="col-md-2 colorBox" style="border: 1px solid #000000; background-color: #000000;"></div>
+                <div class="col-md-2 colorBox" style="border: 1px solid #be0707; background-color: #be0707;"></div>
+                <div class="col-md-2 colorBox" style="border: 1px solid #010650; background-color: #051391;"></div>
+                <div class="col-md-2" style="height: 50px;"></div>
+                <div class="col-md-2" style="height: 50px;"></div>
+                <div class="col-md-2" style="height: 50px;"></div>
+
+            </div>
         </div>
         <div class="col-md-2"></div>
 
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <button id="clearBtn"><b>Clear Signature Box</b> <i class="fa-solid fa-eraser"></i></button>
+        </div>
+        <div class="col-md-4"></div>
+
         <div class="col-md-3"></div>
         <div class="col-md-6">
-            <button id="saveSignature">Save Signature</button>
+            <button id="saveSignature"><b>Merge Signature</b> <i class="fa-solid fa-circle-check"></i></button>
         </div>
         <div class="col-md-3"></div>
 
@@ -82,7 +156,7 @@
         
         <div class="col-md-4"></div>
         <div class="col-md-4">
-            <a id="downloadLink" style="display: none;">Download Signed Document</a>
+            <a id="downloadLink" style="display: none;">Download Signed Document <i class="fa-solid fa-file-arrow-down"></i></a>
         </div>
         <div class="col-md-4"></div>
     </div>

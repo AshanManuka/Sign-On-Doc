@@ -1,5 +1,6 @@
 let selectedPageCanvas = null;
 let signaturePosition = { x: 0, y: 0 };
+let canvasScale = { x: 1, y: 1 };
 
 document.getElementById('document').addEventListener('change', function(event) {
     const file = event.target.files[0];
@@ -23,9 +24,13 @@ document.getElementById('document').addEventListener('change', function(event) {
 
                         canvas.addEventListener('click', function(event) {
                             const rect = canvas.getBoundingClientRect();
-                            signaturePosition.x = event.clientX - rect.left;
-                            signaturePosition.y = event.clientY - rect.top;
+                            signaturePosition.x = (event.clientX - rect.left) * (canvas.width / rect.width);
+                            signaturePosition.y = (event.clientY - rect.top) * (canvas.height / rect.height);
                             selectedPageCanvas = canvas;
+                            canvasScale = {
+                                x: canvas.width / rect.width,
+                                y: canvas.height / rect.height
+                            };
                         });
 
                         documentContainer.appendChild(canvas);
@@ -54,6 +59,17 @@ document.getElementById('document').addEventListener('change', function(event) {
 
 const signaturePad = new SignaturePad(document.getElementById('signaturePad'));
 
+document.querySelectorAll('.colorBox').forEach(box => {
+    box.addEventListener('click', function() {
+        const color = this.style.backgroundColor;
+        signaturePad.penColor = color;
+    });
+});
+
+document.getElementById('clearBtn').addEventListener('click', function() {
+    signaturePad.clear();
+});
+
 document.getElementById('saveSignature').addEventListener('click', async function() {
     if (signaturePad.isEmpty()) {
         alert('Please provide a signature first.');
@@ -70,7 +86,9 @@ document.getElementById('saveSignature').addEventListener('click', async functio
     const img = new Image();
     img.src = signatureDataURL;
     img.onload = function() {
-        docContext.drawImage(img, signaturePosition.x, signaturePosition.y, 100, 50); // Adjust size as needed
+        const signatureWidth = 100 * canvasScale.x; // Adjust this size as needed
+        const signatureHeight = 50 * canvasScale.y; // Adjust this size as needed
+        docContext.drawImage(img, signaturePosition.x-29, signaturePosition.y-20, signatureWidth, signatureHeight); // position
         generatePdfWithSignature();
     };
 });
