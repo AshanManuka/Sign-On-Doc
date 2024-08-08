@@ -95,6 +95,10 @@
             margin-right: 5px;
         }
 
+        #instruct>ul>li{
+            margin-bottom: 15px;
+        }
+
     </style>
 
 </head>
@@ -109,7 +113,7 @@
         <div class="col-md-8">
             <input type="file" id="document" accept=".pdf,.doc,.docx" required>
         </div>
-        <div class="col-md-3" style="background-color: #051391;"></div>
+        <div class="col-md-3"></div>
     </div>
 
     <div class="row">
@@ -117,7 +121,21 @@
         <div class="col-md-8">
             <div id="documentContainer"></div>
         </div>
-        <div class="col-md-3"></div>
+        <div class="col-md-3"  style="background-color: #a3fff3; border-radius: 10px; border:2px solid rgb(23, 128, 79); padding: 50px;">
+            <div id="instruct">
+                <ul>
+                    <li><h5>Choose document from device (PDF)</h5></li>
+                    <li><h5>You can see document on the view</h5></li>
+                    <li><h5>Click/Touch on a location</h5></li>
+                    <li><h5>Select a colour</h5></li>
+                    <li><h5>Drow your Signature in the box</h5></li>
+                    <li><h5>Click/Touch "Merge Signature"</h5></li>
+                    <li><h5>"Download" button will Visible</h5></li>
+                    <li><h5>"Clear Signature Box" for clean box</h5></li>
+                    <h6>If you want to paste more than one signature, After 1st drawing, select place and click/touch "Merge Signature" Button(Signature box should not be Empty)</h6>
+                </ul>
+            </div>
+        </div>
     </div>
 
     <div class="row">
