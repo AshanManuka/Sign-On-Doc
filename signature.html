@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Document Upload & Signature</title>
-    <meta name="viewport" content="width=device-width initial-scale=1 user-scalable=no">
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
     <link rel="stylesheet" href="event/css/bootstrap.min.css">
     <link rel="stylesheet" href="event/style/mainform.css">
     <link rel="stylesheet" href="event/fonts/css/all.css">
@@ -11,7 +11,7 @@
     <style>
         #documentContainer {
             width: 100%;
-            height: 60vh;
+            height: 20vh;
             overflow: auto;
             margin-bottom: 10px;
         }
@@ -99,6 +99,113 @@
             margin-bottom: 15px;
         }
 
+        #introDiv{
+            background-color: #acf8ff; 
+            border-radius: 10px; 
+            border:2px solid rgb(158, 7, 100);
+            position: absolute;
+            top:  8%;
+            left: 50%;
+            height: 80px;
+            padding: 1%;
+        }
+
+        #introText{
+            display: inline-block;
+            background-color: #ffffff;
+        }
+
+
+
+        @media (min-width: 350px ) and (max-width: 1000px){
+            #introDiv{
+            background-color: #faffe4; 
+            border-radius: 10px; 
+            border:2px solid rgb(128, 23, 88);
+            position: absolute;
+            top:  0.5%;
+            left: 0.1%;
+            height: 80px;
+            padding: 5%;
+        }
+
+        #signaturePad{
+            border:2px solid black;
+            border-radius: 10px;
+            float:initial;
+        }
+
+        .colorBox{
+            height: 50px;
+            width: 20%;
+            border-radius: 5px;
+            margin-right: 5px;
+            margin-bottom: 10px;
+        }
+
+        .rmBox{
+            display: none;
+        }
+
+        #boxOne{
+            display: inline;
+            margin-left: 20%;
+        }
+
+        #saveSignature{
+            position: relative; 
+            background-color: #17153B;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            width: 90%;
+            font-size: 20px;
+            margin: 4px 5%;
+            cursor: pointer;
+            border-radius: 5px;      
+        }
+
+        #clearBtn{
+            position: relative; 
+            background-color: #f1d740;
+            color: blackwhite;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            width: 90%;
+            font-size: 20px;
+            margin: 4px 5%;
+            cursor: pointer;
+            border-radius: 5px;   
+        }
+
+        #downloadLink{
+            position: relative; 
+            background-color: #6D214F;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            width: 90%;
+            font-size: 20px;
+            margin: 4px 5%;
+            cursor: pointer;
+            border-radius: 5px;  
+        }
+
+
+
+
+        }
+
+
     </style>
 
 </head>
@@ -113,29 +220,17 @@
         <div class="col-md-8">
             <input type="file" id="document" accept=".pdf,.doc,.docx" required>
         </div>
-        <div class="col-md-3"></div>
+        <div class="col-md-3" id="introDiv">
+            <h5 id="introText">Choose a Document from device</h5>
+        </div>
     </div>
 
     <div class="row">
         <div class="col-md-1"></div>
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div id="documentContainer"></div>
         </div>
-        <div class="col-md-3"  style="background-color: #a3fff3; border-radius: 10px; border:2px solid rgb(23, 128, 79); padding: 50px;">
-            <div id="instruct">
-                <ul>
-                    <li><h5>Choose document from device (PDF)</h5></li>
-                    <li><h5>You can see document on the view</h5></li>
-                    <li><h5>Click/Touch on a location</h5></li>
-                    <li><h5>Select a colour</h5></li>
-                    <li><h5>Drow your Signature in the box</h5></li>
-                    <li><h5>Click/Touch "Merge Signature"</h5></li>
-                    <li><h5>"Download" button will Visible</h5></li>
-                    <li><h5>"Clear Signature Box" for clean box</h5></li>
-                    <h6>If you want to paste more than one signature, After 1st drawing, select place and click/touch "Merge Signature" Button(Signature box should not be Empty)</h6>
-                </ul>
-            </div>
-        </div>
+        <div class="col-md-1"></div>
     </div>
 
     <div class="row">
@@ -145,13 +240,13 @@
         </div>
         <div class="col-md-3">
             <div class="row">
-                <div class="row" style="height: 20px;"></div>
-                <div class="col-md-2 colorBox" style="border: 1px solid #000000; background-color: #000000;"></div>
+                <div class="row" id="boxContainer" style="height: 20px;"></div>
+                <div class="col-md-2 colorBox" id="boxOne" style="border: 1px solid #000000; background-color: #000000;"></div>
                 <div class="col-md-2 colorBox" style="border: 1px solid #be0707; background-color: #be0707;"></div>
                 <div class="col-md-2 colorBox" style="border: 1px solid #010650; background-color: #051391;"></div>
-                <div class="col-md-2" style="height: 50px;"></div>
-                <div class="col-md-2" style="height: 50px;"></div>
-                <div class="col-md-2" style="height: 50px;"></div>
+                <div class="col-md-2 rmBox" style="height: 50px;"></div>
+                <div class="col-md-2 rmBox" style="height: 50px;"></div>
+                <div class="col-md-2 rmBox" style="height: 50px;"></div>
 
             </div>
         </div>
@@ -188,6 +283,8 @@
     <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.1/dist/signature_pad.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="app.js"></script>
+    
 </body>
 </html>
